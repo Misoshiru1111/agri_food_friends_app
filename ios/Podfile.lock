@@ -38,29 +38,18 @@ PODS:
   - Flutter (1.0.0)
   - flutter_better_camera (0.6.0):
     - Flutter
-  - flutter_inappwebview_quill (0.0.1):
-    - Flutter
-    - flutter_inappwebview_quill/Core (= 0.0.1)
-    - OrderedSet (~> 5.0)
-  - flutter_inappwebview_quill/Core (0.0.1):
-    - Flutter
-    - OrderedSet (~> 5.0)
   - flutter_keyboard_visibility (0.0.1):
     - Flutter
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
-  - gallery_saver (0.0.1):
-    - Flutter
-  - image_picker_ios (0.0.1):
-    - Flutter
   - MTBBarcodeScanner (5.0.11)
-  - OrderedSet (5.0.0)
   - pasteboard (0.0.1):
     - Flutter
-  - path_provider_ios (0.0.1):
+  - path_provider_foundation (0.0.1):
     - Flutter
-  - permission_handler_apple (9.0.4):
+    - FlutterMacOS
+  - permission_handler_apple (9.1.1):
     - Flutter
   - qr_code_scanner (0.2.0):
     - Flutter
@@ -68,15 +57,14 @@ PODS:
   - SDWebImage (5.14.2):
     - SDWebImage/Core (= 5.14.2)
   - SDWebImage/Core (5.14.2)
-  - shared_preferences_ios (0.0.1):
+  - shared_preferences_foundation (0.0.1):
     - Flutter
-  - sqflite (0.0.2):
+    - FlutterMacOS
+  - sqflite (0.0.3):
     - Flutter
     - FMDB (>= 2.7.5)
   - SwiftyGif (5.4.3)
   - url_launcher_ios (0.0.1):
-    - Flutter
-  - video_player_avfoundation (0.0.1):
     - Flutter
 
 DEPENDENCIES:
@@ -84,18 +72,14 @@ DEPENDENCIES:
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - Flutter (from `Flutter`)
   - flutter_better_camera (from `.symlinks/plugins/flutter_better_camera/ios`)
-  - flutter_inappwebview_quill (from `.symlinks/plugins/flutter_inappwebview_quill/ios`)
   - flutter_keyboard_visibility (from `.symlinks/plugins/flutter_keyboard_visibility/ios`)
-  - gallery_saver (from `.symlinks/plugins/gallery_saver/ios`)
-  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
   - pasteboard (from `.symlinks/plugins/pasteboard/ios`)
-  - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - qr_code_scanner (from `.symlinks/plugins/qr_code_scanner/ios`)
-  - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/ios`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
-  - video_player_avfoundation (from `.symlinks/plugins/video_player_avfoundation/ios`)
 
 SPEC REPOS:
   trunk:
@@ -103,7 +87,6 @@ SPEC REPOS:
     - DKPhotoGallery
     - FMDB
     - MTBBarcodeScanner
-    - OrderedSet
     - SDWebImage
     - SwiftyGif
 
@@ -116,55 +99,42 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_better_camera:
     :path: ".symlinks/plugins/flutter_better_camera/ios"
-  flutter_inappwebview_quill:
-    :path: ".symlinks/plugins/flutter_inappwebview_quill/ios"
   flutter_keyboard_visibility:
     :path: ".symlinks/plugins/flutter_keyboard_visibility/ios"
-  gallery_saver:
-    :path: ".symlinks/plugins/gallery_saver/ios"
-  image_picker_ios:
-    :path: ".symlinks/plugins/image_picker_ios/ios"
   pasteboard:
     :path: ".symlinks/plugins/pasteboard/ios"
-  path_provider_ios:
-    :path: ".symlinks/plugins/path_provider_ios/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/darwin"
   permission_handler_apple:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
   qr_code_scanner:
     :path: ".symlinks/plugins/qr_code_scanner/ios"
-  shared_preferences_ios:
-    :path: ".symlinks/plugins/shared_preferences_ios/ios"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   sqflite:
     :path: ".symlinks/plugins/sqflite/ios"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
-  video_player_avfoundation:
-    :path: ".symlinks/plugins/video_player_avfoundation/ios"
 
 SPEC CHECKSUMS:
-  device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
+  device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
   DKImagePickerController: b512c28220a2b8ac7419f21c491fc8534b7601ac
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
-  file_picker: 817ab1d8cd2da9d2da412a417162deee3500fc95
+  file_picker: ce3938a0df3cc1ef404671531facef740d03f920
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_better_camera: f0dcb72bf079742d017c71b67d42324d9987fa30
-  flutter_inappwebview_quill: eb69bfa35fdde431e273476cf359a3686427b8da
   flutter_keyboard_visibility: 0339d06371254c3eb25eeb90ba8d17dca8f9c069
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
-  gallery_saver: 9fc173c9f4fcc48af53b2a9ebea1b643255be542
-  image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
   MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
-  OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
   pasteboard: 982969ebaa7c78af3e6cc7761e8f5e77565d9ce0
-  path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
-  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
+  path_provider_foundation: 29f094ae23ebbca9d3d0cec13889cd9060c0e943
+  permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
   qr_code_scanner: bb67d64904c3b9658ada8c402e8b4d406d5d796e
   SDWebImage: b9a731e1d6307f44ca703b3976d18c24ca561e84
-  shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
-  sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
+  shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
+  sqflite: 31f7eba61e3074736dff8807a9b41581e4f7f15a
   SwiftyGif: 6c3eafd0ce693cad58bb63d2b2fb9bacb8552780
-  url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
-  video_player_avfoundation: e489aac24ef5cf7af82702979ed16f2a5ef84cff
+  url_launcher_ios: 08a3dfac5fb39e8759aeb0abbd5d9480f30fc8b4
 
 PODFILE CHECKSUM: ef19549a9bc3046e7bb7d2fab4d021637c0c58a3
 

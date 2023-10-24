@@ -6,7 +6,7 @@ import 'package:agri_food_freind/request/event/event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/extensions.dart';
 import 'package:flutter_quill/flutter_quill.dart' as editor;
-import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
+// import 'package:flutter_quill_extensions/flutter_quill_extensions.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -48,6 +48,8 @@ class NotesEmbedBuilder implements editor.EmbedBuilder {
     editor.QuillController controller,
     editor.Embed node,
     bool readOnly,
+    bool inline,
+    TextStyle textStyle,
   ) {
     final notes = NotesBlockEmbed(node.value.data).document;
 
@@ -67,6 +69,22 @@ class NotesEmbedBuilder implements editor.EmbedBuilder {
         ),
       ),
     );
+  }
+
+  @override
+  WidgetSpan buildWidgetSpan(Widget widget) {
+    // TODO: implement buildWidgetSpan
+    throw UnimplementedError();
+  }
+
+  @override
+  // TODO: implement expanded
+  bool get expanded => throw UnimplementedError();
+
+  @override
+  String toPlainText(Embed node) {
+    // TODO: implement toPlainText
+    throw UnimplementedError();
   }
 }
 
@@ -110,10 +128,7 @@ class Post extends StatelessWidget {
             )
           ],
         ),
-        content: editor.QuillEditor.basic(
-          controller: quillEditorController,
-          readOnly: false,
-        ),
+        content: editor.QuillEditor.basic(),
       ),
     );
 
@@ -128,7 +143,7 @@ class Post extends StatelessWidget {
 
     if (isEditing) {
       final offset =
-          editor.getEmbedNode(controller, controller.selection.start).item1;
+          editor.getEmbedNode(controller, controller.selection.start).offset;
       controller.replaceText(
           offset, 1, block, TextSelection.collapsed(offset: offset));
     } else {
@@ -141,29 +156,27 @@ class Post extends StatelessWidget {
     Widget quillEditor = editor.QuillEditor(
       // enableSelectionToolbar
       scrollController: ScrollController(),
-      scrollable: true,
+
       focusNode: FocusNode(),
-      autoFocus: true,
-      expands: false,
-      padding: EdgeInsets.zero,
-      keyboardAppearance: Brightness.light,
-      controller: _controller!,
-      readOnly: false,
+
       // placeholder: 'Add content',
-      enableSelectionToolbar: isMobile(),
-      embedBuilders: [
-        ...FlutterQuillEmbeds.builders(),
-        NotesEmbedBuilder(addEditNote: _addEditNote)
-      ],
-    );
-    var toolbar = editor.QuillToolbar.basic(
-      controller: _controller!,
-      embedButtons: FlutterQuillEmbeds.buttons(
-        onImagePickCallback: _onImagePickCallback,
+
+      configurations: editor.QuillEditorConfigurations(
+        autoFocus: true,
+        expands: false,
+        padding: EdgeInsets.zero,
+        keyboardAppearance: Brightness.light,
+        // controller: _controller!,
+        readOnly: false,
+        scrollable: true,
+        enableSelectionToolbar: isMobile(),
+        // embedBuilders: [
+        //   ...FlutterQuillEmbeds.builders(),
+        //   NotesEmbedBuilder(addEditNote: _addEditNote)
+        // ],
       ),
-      showAlignmentButtons: true,
-      afterButtonPressed: _focusNode.requestFocus,
     );
+    var toolbar = editor.QuillToolbar();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -207,16 +220,12 @@ class Post extends StatelessWidget {
       ),
       body: Container(
         child: Column(children: [
-         
           Row(
             children: [
-             
               SizedBox(
                 height: 30,
                 width: MediaQuery.of(context).size.width - 50,
-                child:
-
-                TextField(
+                child: TextField(
                   controller: titleC,
                   decoration: new InputDecoration.collapsed(hintText: '標題名稱'),
                 ),

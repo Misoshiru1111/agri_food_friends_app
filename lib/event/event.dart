@@ -53,7 +53,6 @@ class _EventScreenState extends State<EventScreen>
     // print(activity)
     _showCommentBox.value = true;
     _commentFocusNode.requestFocus();
-    
   }
 
   Future<void> addComment(String? message) async {
@@ -83,14 +82,15 @@ class _EventScreenState extends State<EventScreen>
 
   Future<void> _loadMore() async {
     // Ensure we're not already loading more activities.
-    if (!_isPaginating) {
-      _isPaginating = true;
-      context.feedBloc
-          .loadMoreEnrichedActivities(feedGroup: _feedGroup, flags: _flags)
-          .whenComplete(() {
-        _isPaginating = false;
-      });
-    }
+    // if (!_isPaginating) {
+    //   _isPaginating = true;
+    //   context.
+    //   feedBloc
+    //       .loadMoreEnrichedActivities(feedGroup: _feedGroup, flags: _flags)
+    //       .whenComplete(() {
+    //     _isPaginating = false;
+    //   });
+    // }
   }
 
   @override
@@ -158,9 +158,9 @@ class _EventScreenState extends State<EventScreen>
             target: element.article_id.toString()),
         onAddComment: openCommentBox,
         // article_id: element.account,
-        controller: editor.QuillController(
-            document: editor.Document.fromJson(jsonDecode(element.content)),
-            selection: TextSelection.collapsed(offset: 0)),
+        // controller: editor.QuillController(
+        //     document: editor.Document.fromJson(jsonDecode(element.content)),
+        //     selection: TextSelection.collapsed(offset: 0)),
       ));
     }
 
@@ -178,34 +178,30 @@ class _EventScreenState extends State<EventScreen>
     );
 
     return Scaffold(
-      
         resizeToAvoidBottomInset: false,
         // backgroundColor: Colors.transparent,
-        body: 
-        
-        Container(
-          // width: 200,
-          // height: 300,
-          
+        body: Container(
+            // width: 200,
+            // height: 300,
+
             padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 16.0),
             child: Column(
-              
               children: list.isEmpty
                   ? []
                   : [
                       Stack(
                         children: [
                           SizedBox(
-                            width: MediaQuery.of(context).size.width ,
-                            height:  MediaQuery.of(context).size.height-100,
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.height - 100,
                             child: ListView(
                               children: getPost(),
                               scrollDirection: Axis.vertical,
                             ),
-                          )
-                        ,
+                          ),
                           Padding(
-                            padding:  EdgeInsets.fromLTRB(0, MediaQuery.of(context).size.height-300, 0, 0),
+                            padding: EdgeInsets.fromLTRB(0,
+                                MediaQuery.of(context).size.height - 300, 0, 0),
                             // padding:  EdgeInsets.fromLTRB(0, _commentFocusNode.offset.dy, 0, 0),
                             child: _CommentBox(
                               textEditingController: _commentTextController,
@@ -286,7 +282,7 @@ class _CommentBox extends StatefulWidget {
     Key? key,
     required this.commenter,
     required this.textEditingController,
-    required this.focusNode, 
+    required this.focusNode,
     required this.addComment,
     required this.showCommentBox,
   }) : super(key: key);

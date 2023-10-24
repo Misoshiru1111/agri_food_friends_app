@@ -70,7 +70,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
           FocusScope.of(context).unfocus();
         },
         child: Scaffold(
-          resizeToAvoidBottomInset:false,
+          resizeToAvoidBottomInset: false,
           appBar: AppBar(
             title: const Text('Comments',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
@@ -106,13 +106,10 @@ class _CommentsList extends StatelessWidget {
     return ReactionListCore(
       lookupValue: activityId,
       kind: 'comment',
-      loadingBuilder: (context) =>
-          const Center(child: CircularProgressIndicator()),
-      errorBuilder: (context, error) =>
-          const Center(child: Text('Could not load comments.')),
-      emptyBuilder: (context) =>
-          const Center(child: Text('Be the first to add a comment.')),
-      reactionsBuilder: (context, reactions) {
+      onProgressWidget: const Center(child: CircularProgressIndicator()),
+      onErrorWidget: const Center(child: Text('Could not load comments.')),
+      onEmptyWidget: const Center(child: Text('Be the first to add a comment.')),
+      reactionsBuilder: (context, reactions, n) {
         return ListView.builder(
           itemCount: reactions.length + 1,
           itemBuilder: (context, index) {
@@ -176,8 +173,7 @@ class __CommentBoxState extends State<_CommentBox> {
           await FeedProvider.of(context).bloc.onAddChildReaction(
             kind: 'comment',
             reaction: commentFocus.reaction!,
-            lookupValue: widget.enrichedActivity.id!,
-            data: {'message': value},
+            data: {'message': value}, activity: widget.enrichedActivity,
           );
         }
       }

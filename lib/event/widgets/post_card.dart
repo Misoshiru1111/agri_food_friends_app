@@ -11,8 +11,7 @@ import '../app_widgets.dart';
 import '../comments/comments_screen.dart';
 
 typedef OnAddComment = void Function(
-  EnrichedActivity activity, 
-  {
+  EnrichedActivity activity, {
   String? message,
 });
 
@@ -25,14 +24,14 @@ class PostCard extends StatelessWidget {
       {Key? key,
       required this.enrichedActivity,
       required this.onAddComment,
-      required this.controller,
+      // required this.controller,
       required this.msg_list})
       : super(key: key);
 
   /// Enriched activity (post) to display.
   final EnrichedActivity enrichedActivity;
   final OnAddComment onAddComment;
-  final editor.QuillController controller;
+  // final editor.QuillController controller;
   final List<Msg> msg_list;
   // final String article_id;
 
@@ -42,23 +41,28 @@ class PostCard extends StatelessWidget {
     final userData = StreamagramUser.fromMap(actorData as Map<String, dynamic>);
 
     return Column(
-      
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _ProfileSlab(
           userData: userData,
         ),
         editor.QuillEditor(
-          scrollable: true,
-          expands: false,
-          autoFocus: false,
+          // scrollable: true,
+          // expands: false,
+          // autoFocus: false,
           focusNode: FocusNode(),
           scrollController: ScrollController(),
-          padding: EdgeInsets.zero,
-          controller: controller,
-          readOnly: true,
-          keyboardAppearance: Brightness.light,
-          showCursor: false,
+// controller: controller,
+          configurations: const editor.QuillEditorConfigurations(
+            scrollable: true,
+            expands: false,
+            autoFocus: false,
+            padding: EdgeInsets.zero,
+            
+            readOnly: true,
+            keyboardAppearance: Brightness.light,
+            showCursor: false,
+          ),
         ),
         _InteractiveCommentSlab(
           msg_list: msg_list,
@@ -299,19 +303,16 @@ class _InteractiveCommentSlabState extends State<_InteractiveCommentSlab> {
       res.add(Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text.rich(
-            
-            TextSpan(
-              
-              children: <TextSpan>[
-                TextSpan(
-                  
-                    text: element.account, 
-                    style: AppTextStyle.textStyleBold),
-                const TextSpan(text: '  '),
-                TextSpan(text: element.content),
-              ],
-            ),textAlign: TextAlign.left,
+          TextSpan(
+            children: <TextSpan>[
+              TextSpan(
+                  text: element.account, style: AppTextStyle.textStyleBold),
+              const TextSpan(text: '  '),
+              TextSpan(text: element.content),
+            ],
           ),
+          textAlign: TextAlign.left,
+        ),
       ));
     });
     return res;
